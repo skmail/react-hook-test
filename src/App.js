@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Menu from './components/Menu'
+import MenuItem from './components/MenuItem'
+import SubMenu from './components/SubMenu'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div>
+      <Menu>
+        <SubMenu title="Movies">
+          <MenuItem>Action</MenuItem>
+          <MenuItem>Drama</MenuItem>
+          <MenuItem>Adventure</MenuItem>
+          <MenuItem>Animation</MenuItem>
+          <MenuItem>Biography</MenuItem>
+          <MenuItem>Mystery</MenuItem>
+          <MenuItem>Crime</MenuItem>
+          <MenuItem>Horror</MenuItem>
+          <SubMenu title='Releases'>
+            <MenuItem>2019</MenuItem>
+            <MenuItem>2018</MenuItem>
+            <MenuItem>2017</MenuItem>
+            <MenuItem>2016</MenuItem>
+          </SubMenu>
+        </SubMenu>
+        <MenuItem>TV - Series</MenuItem>
+        <MenuItem>Top 10</MenuItem>
+        <MenuItem>Contact us</MenuItem>
+      </Menu>
+    </div>
+  )
 }
 
-export default App;
+export default App
