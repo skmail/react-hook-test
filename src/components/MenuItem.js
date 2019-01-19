@@ -3,7 +3,7 @@ import uuid from 'uuid'
 
 import MenuContext from './MenuContext'
 
-const MenuItem = ({children, id}) => {
+const MenuItem = ({children, id, title}) => {
 
   const [menuId] = useState(function(){
     return id || uuid.v4()
@@ -21,6 +21,9 @@ const MenuItem = ({children, id}) => {
 
   return (
     <div className={`${defaultClass} ${className}`} onClick={onClick}>
+      {
+        typeof title !== "undefined" && title
+      }
       {children}
     </div>
   )

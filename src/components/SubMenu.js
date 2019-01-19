@@ -4,7 +4,7 @@ import uuid from 'uuid'
 import MenuItem from './MenuItem'
 import MenuContext from './MenuContext'
 
-const SubMenu = ({children, title, id}) => {
+const SubMenu = ({children, title, id, items = []}) => {
 
   const [menuId] = useState(function () {
     return id || uuid.v4()
@@ -38,7 +38,16 @@ const SubMenu = ({children, title, id}) => {
       {
         isSelected === true &&
         <div  className="ml-2">
-          {children}
+
+          {
+            items.length > 0 &&
+            items.map( item =>
+              Array.isArray(item.items) && item.items.length > 0 ? <SubMenu key={item.key} {...item}/> : <MenuItem key={item.key} {...item}/>
+            )
+          }
+
+          { items.length === 0 && children }
+
         </div>
       }
     </MenuContext.Provider>
